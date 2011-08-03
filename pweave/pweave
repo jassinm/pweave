@@ -538,7 +538,9 @@ def run_pweave(settings):
     # get the names of output files
     infile = settings['sourcefile_path']
     basename, infile_ext = os.path.splitext(infile)
-    settings['basename'] = basename
+    nnmae , infile_ext = os.path.splitext(os.path.basename(infile))
+    settings['basename'] = nnmae
+
     if infile_ext == ext:
         raise UserWarning("aborted: input and output filenames identical")
     outfile_fname = basename + ext
