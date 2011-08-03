@@ -252,14 +252,14 @@ class DefaultProcessor(CodeProcessor):
 
         #Save and include a figure?
         if blockoptions['fig'].lower() == 'true':
-            figname = os.path.join(self.settings['imgfolder_path'],'Fig' +str(self.nfig) \
+            figname = os.path.join(self.settings['imgfolder_path'],'Fig_'+ self.settings['basename'] + str(self.nfig) \
                     + self.settings['img_format'])
             plt.savefig(figname, dpi = 200)
 
             #TODO: why can't we just set 'img_format' for sphinx like we do for
             #      tex and rst?
             if self.settings['format'] == 'sphinx':
-                figname2_base = os.path.join(self.settings['imgfolder_path'], 'Fig' + str(self.nfig))
+                figname2_base = os.path.join(self.settings['imgfolder_path'], 'Fig' + self.settings['basename'] + str(self.nfig))
                 figname2 = figname2_base + self.settings['sphinxteximg_format']
                 figname2_base_rel = \
                     os.path.relpath(figname2_base, self.settings['base_output_path'])
@@ -538,6 +538,7 @@ def run_pweave(settings):
     # get the names of output files
     infile = settings['sourcefile_path']
     basename, infile_ext = os.path.splitext(infile)
+    settings['basename'] = basename
     if infile_ext == ext:
         raise UserWarning("aborted: input and output filenames identical")
     outfile_fname = basename + ext
