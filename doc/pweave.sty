@@ -1,0 +1,48 @@
+\ProvidesPackage{matti}
+
+%Sivun koko
+%\usepackage[left=2.8cm,top=3cm,right=2.8cm]{geometry}
+
+%Linkit
+%\usepackage{hyperref}
+%
+%\hypersetup{
+%  pdfauthor={Matti Pastell},
+%  colorlinks=TRUE,
+%  linkcolor=black,
+%  citecolor=blue,
+%  urlcolor=blue
+%}
+
+%\usepackage{graphicx}
+
+%Viittaukset numeroina
+%\usepackage[super]{cite}
+
+%Listat uusiksi
+%\usepackage{tweaklist}
+%\renewcommand{\itemhook}{\setlength{\topsep}{0pt}%
+%  \setlength{\itemsep}{0pt}}
+
+\pagenumbering{arabic}
+
+%Sivujen otsikot
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{%
+\markright{\thesection\ #1}}
+\fancyhf{} % delete current header and footer
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % space for the rule
+\fancypagestyle{plain}{%
+\fancyhead{} % get rid of headers on plain pages
+\renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+%\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%\graphicspath{{~/Documents/Muut/templates/figs/}}

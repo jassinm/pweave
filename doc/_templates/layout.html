@@ -1,0 +1,29 @@
+1{% extends "!layout.html" %}
+
+{% block rootrellink %}
+        <li><a href="{{ pathto('index') }}">Home</a>|&nbsp;</li>
+        <li><a href="{{ pathto('docs') }}">Documentation</a>&raquo;</li>
+
+
+{% endblock %}
+
+
+{% block relbar1 %}
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="{{ pathto('index') }}">
+<h1>Pweave - literate programming with Python</h1>
+
+</div>
+
+{{ super() }}
+{% endblock %}
+{# put the sidebar before the body #}
+{% block sidebar1 %}{{ sidebar() }}{% endblock %}
+{% block sidebar2 %}{% endblock %}
+
+{% block footer %}
+<div class="footer">
+      &copy; Copyright 2010. <a href="http://mpastell.com">Matti Pastell</a>. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+{% endblock %}
