@@ -87,9 +87,9 @@ class MatplotlibFigureProcessor(CodeProcessor):
         "Autogenerate and return an absolute image path."
         infile = self.settings['sourcefile_path']
         basename, infile_ext = os.path.splitext(infile)
+        basename = os.path.basename(basename)
         fname = basename + "_mpl_image_%03d.pdf" % self.figure_number
-        imgpath = os.path.abspath(os.path.join(outfolder, fname))
-
+        imgpath = os.path.join(os.path.abspath(outfolder), fname)
         return imgpath
 
 
@@ -100,7 +100,6 @@ class MatplotlibFigureProcessor(CodeProcessor):
 
         for k in ['width', 'caption', 'where']:
             s[k] = o[k]
-
 
         #r'0.9\linewidth',
         dimensions = []
