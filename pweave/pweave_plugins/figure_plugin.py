@@ -77,7 +77,7 @@ class MatplotlibFigureProcessor(CodeProcessor):
         return r'''
 \begin{figure}[$where]
  $centering
- \includegraphics[$dimensions]{$imgfile_relpath}
+ \includegraphics[$dimensions]{$imgfile_abspath}
  \caption{$caption}
  $label
 \end{figure}
@@ -85,7 +85,9 @@ class MatplotlibFigureProcessor(CodeProcessor):
 
     def get_image_abspath(self, outfolder):
         "Autogenerate and return an absolute image path."
-        fname = "mpl_image_%03d.pdf" % self.figure_number
+        infile = self.settings['sourcefile_path']
+        basename, infile_ext = os.path.splitext(infile)
+        fname = basename + "_mpl_image_%03d.pdf" % self.figure_number
         imgpath = os.path.abspath(os.path.join(outfolder, fname))
 
         return imgpath
