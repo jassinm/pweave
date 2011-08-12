@@ -543,9 +543,9 @@ def run_pweave(settings):
 
     if infile_ext == ext:
         raise UserWarning("aborted: input and output filenames identical")
-    outfile_fname = basename + ext
-    pyfile_fname = basename + '.py'
 
+    outfile_fname = os.path.join(settings['base_output_path'],nnmae + ext)
+    pyfile_fname = os.path.join(settings['base_output_path'],nnmae + '.py')
     # try to create the output directories
     for path in [settings['base_output_path'], settings['imgfolder_path']]:
         try:

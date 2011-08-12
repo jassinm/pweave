@@ -75,6 +75,9 @@ class MatplotlibFigureProcessor(CodeProcessor):
 
     def output_template_str(self):
         return r'''
+\begin{verbatim}
+$verbatim
+\end{verbatim}
 \begin{figure}[$where]
  $centering
  \includegraphics[$dimensions]{$imgfile_abspath}
@@ -163,15 +166,16 @@ class MatplotlibFigureProcessor(CodeProcessor):
         # a bit ugly... (passing info here via substitution_vars dict)
         self.write_figure(substitution_vars['imgfile_abspath'])
 
+        substitution_vars['verbatim']=codeblock
         document_text = \
             Template(self.output_template_str()).substitute(substitution_vars)
 
         # by default, don't echo the codeblock to the output document
         if codeblock_options['echo'].lower() == 'true':
             code_text = codeblock
+
         else:
             code_text = ''
 
         self.figure_number += 1
-
         return (document_text, code_text)
